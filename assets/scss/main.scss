@@ -1,0 +1,132 @@
+//declaration of variables
+$minimum-width: 320px;
+$desktop-width: 641px;
+$maximum-width: 1230px;
+$mf-red: #cd0538;
+$mf-white: #fff;
+
+// determining if it is a desktop view
+@mixin respond-to($media) {
+	@if $media == desktop {
+		@media only screen and (min-width: $desktop-width) {
+			@content;
+		}
+	}
+}
+
+/* defining a link animation in the desktop view */
+@keyframes navhover {
+	from {background-color: transparent; color: $mf-white;}
+	to {background-color: $mf-white; color: $mf-red;}
+}
+
+body {
+	margin: 0;
+ 	font-family: Helvetica, sans-serif;
+}
+
+header {
+	overflow: hidden;
+	background-color: $mf-red;
+	margin: 0 auto;
+	min-width: $minimum-width;
+	max-width: $maximum-width;
+	min-height: 60px;
+
+	a.logo {
+		z-index: 1;
+		margin: 14px;
+		float: left;
+		display: block;
+		background: url("../image/mf_logo.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 48px;
+		height: 32px;
+	}
+
+	a.icon {
+		z-index: 1;
+		margin: 14px;
+		float: right;
+		display: block;
+		background: url("../image/burger.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 40px;
+		height: 32px;
+
+		@include respond-to(desktop) {
+			display: none;
+		}
+	}
+
+	nav {
+		z-index: 0;
+		float: left;
+		width: 100%;
+		display: none;
+		position: relative;
+
+		@include respond-to(desktop) {
+			display: block !important;
+			text-align: center;
+			margin: 20px 0 0 48px;
+			float: none;
+			width: auto;
+			background: transparent;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				list-style: none;
+				display: block;
+				width: 100%;
+				position: relative;
+				border-bottom: 1px solid #000;
+				background-color: $mf-white;
+				padding: 10px 14px 9px 14px;
+				
+				@include respond-to(desktop) {
+					margin: 0 2px;
+					padding: 0;
+					width: auto;
+					display: inline-block;
+					border: none;
+					background-color: transparent;
+				}
+
+				a {
+					text-decoration: none;
+					text-transform: uppercase;
+					color: $mf-red;
+					text-align: left;
+
+					&:hover {
+						font-weight: bold;
+					}
+
+					@include respond-to(desktop) {
+						color: $mf-white;
+						padding: 3px 5px;
+						font-weight: 800;
+						border-radius: 5px;
+						&:hover {
+							font-weight: 800;
+							/* executing a link animation in the desktop view */
+							animation-name: navhover;
+							animation-duration: 2s;
+							animation-fill-mode: forwards;
+						}
+					}
+
+				}
+			}
+		}
+
+	}
+	
+}

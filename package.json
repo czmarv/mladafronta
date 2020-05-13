@@ -1,0 +1,23 @@
+{
+  "name": "mladafronta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch assets/scss -o assets/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/czmarv/mladafronta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/czmarv/mladafronta/issues"
+  },
+  "homepage": "https://github.com/czmarv/mladafronta#readme",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
